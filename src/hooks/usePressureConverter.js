@@ -31,7 +31,7 @@ const allUnits = [
   "newton_per_mm2",
   "kilonewton_per_m2",
   "millibar",
-  "mbar",
+  // "mbar",
   "microbar",
   "dyne_per_cm2",
   "kgf_per_m2",
@@ -86,7 +86,7 @@ const unitLabels = {
   newton_per_mm2: "Newton per mm²",
   kilonewton_per_m2: "Kilonewton per m²",
   millibar: "Millibar",
-  mbar: "Millibar",
+  // mbar: "Millibar",
   microbar: "Microbar",
   dyne_per_cm2: "Dyne per cm²",
   kgf_per_m2: "kgf per m²",
@@ -129,7 +129,7 @@ const unitCategories = {
     "cpa",
   ],
   "Scientific Notation": ["mpa_small", "µpa", "npa", "ppa_small", "fpa", "apa"],
-  "Metric Units": ["bar", "millibar", "mbar", "microbar", "at"],
+  "Metric Units": ["bar", "millibar", "microbar", "at"],
   "Imperial Pressure": ["psi", "ksi", "psf", "kip_per_sqin", "psi_small"],
   "Weight-based Imperial": [
     "ton_short_per_sqft",
@@ -161,7 +161,7 @@ export const usePressureConverter2 = () => {
   const [inputValue, setInputValue] = useState("");
   const [inputUnit, setInputUnit] = useState("pa");
   const [outputValue, setOutputValue] = useState("");
-  const [outputUnit, setOutputUnit] = useState("bar");
+  const [outputUnit, setOutputUnit] = useState("pa");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -454,7 +454,7 @@ export const usePressureConverter2 = () => {
   const handleReset = useCallback(() => {
     setInputValue("1");
     setInputUnit("pa");
-    setOutputUnit("bar");
+    setOutputUnit("pa");
     setOutputValue("");
     setResults([]);
     setError(null);

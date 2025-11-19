@@ -1,10 +1,11 @@
-import React from "react";
-import { Thermometer, Gauge, Zap, Eraser, Calculator } from "lucide-react";
+import React, { useEffect } from "react";
+import { Thermometer, Gauge, Zap, Eraser } from "lucide-react";
 import BoilIcon from "../../../assets/boil.png";
 import { useBoilingPointCalculator } from "../../../hooks/useBoilingPointCalculator";
 import { BoilingPointHeader } from "./BoilingPointHeader";
 import { SubstanceSelector } from "./SubstanceSelector";
 import { InputCard } from "./InputCard";
+import { ResultsDisplay } from "./ResultsDisplay";
 
 export default function BoilingPointCalculator() {
   const {
@@ -27,6 +28,17 @@ export default function BoilingPointCalculator() {
     validationErrors,
     calculateBoilingPoint,
   } = useBoilingPointCalculator();
+
+  // Auto-calculate when inputs change
+  useEffect(() => {
+    if (selectedSubstance && inputs.P1 && inputs.T1 && inputs.Hvap && (inputs.P2 || inputs.T2)) {
+      const timer = setTimeout(() => {
+        calculateBoilingPoint();
+      }, 500); // Debounce calculation
+
+      return () => clearTimeout(timer);
+    }
+  }, [inputs.P1, inputs.T1, inputs.Hvap, inputs.P2, inputs.T2, selectedSubstance]);
 
   // Input field configurations
   const knownValuesFields = [
@@ -72,40 +84,21 @@ export default function BoilingPointCalculator() {
     },
   ];
 
-  const handleSubmit = async () => {
-    // Only call API when button is clicked
-    await calculateBoilingPoint();
-  };
-
-  // Check if form is valid for submission - with detailed checks
+  // Check if form is valid for auto-calculation
   const isFormValid = () => {
-    const hasRequiredFields =
-      selectedSubstance && inputs.P1 && inputs.T1 && inputs.Hvap;
+    const hasRequiredFields = selectedSubstance && inputs.P1 && inputs.T1 && inputs.Hvap;
     const hasOneTarget = (inputs.P2 || inputs.T2) && !(inputs.P2 && inputs.T2);
     const noValidationErrors = Object.keys(validationErrors).length === 0;
-
-    console.log("DEBUG - Form validation:", {
-      hasRequiredFields,
-      hasOneTarget,
-      noValidationErrors,
-      selectedSubstance,
-      P1: inputs.P1,
-      T1: inputs.T1,
-      Hvap: inputs.Hvap,
-      P2: inputs.P2,
-      T2: inputs.T2,
-      validationErrors,
-    });
 
     return hasRequiredFields && hasOneTarget && noValidationErrors;
   };
 
   return (
-    <div className="w-full bg-gradient-to-br from-orange-50/50 via-red-50/30 to-amber-50/20 border border-white/50 overflow-hidden backdrop-blur-sm mx-auto py-4 sm:py-6 lg:py-8 px-3 sm:px-2 lg:px-4 xl:px-6">
+    <div className="w-full bg-gradient-to-br from-orange-50/50 via-red-50/30 to-amber-50/20 border border-white/50 overflow-hidden backdrop-blur-sm mx-auto py-3 px-2">
       {/* Header */}
       <BoilingPointHeader BoilIcon={BoilIcon} />
 
-      <div className="p-2 sm:p-3 lg:p-4">
+      <div className="p-2">
         {/* Substance Selection */}
         <SubstanceSelector
           selectedSubstance={selectedSubstance}
@@ -118,7 +111,7 @@ export default function BoilingPointCalculator() {
         />
 
         {/* Input Cards */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 mb-4">
           {/* Known Values Card */}
           <InputCard
             title="Known Values"
@@ -145,77 +138,40 @@ export default function BoilingPointCalculator() {
             validationErrors={validationErrors}
             focusColor="focus:ring-red-500"
             showHelperText={true}
+            clearAll={clearAll}
           />
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 mb-6 sm:mb-8">
-          {/* Clear Button */}
-          <button
-            onClick={clearAll}
-            className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 min-w-[140px]"
-          >
-            {/* Hover effect background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100/50 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+        {/* Clear Button */}
+       
 
-            <Eraser className="w-4 h-4 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
-            <span className="text-base relative z-10">Clear All</span>
-          </button>
-
-          {/* Submit Button */}
-          <button
-            onClick={handleSubmit}
-            disabled={!isFormValid() || loading}
-            className={`group relative font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 min-w-[140px] ${
-              isFormValid() && !loading
-                ? "bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-green-500/25 hover:shadow-green-500/40 cursor-pointer border border-green-600"
-                : "bg-gradient-to-r from-gray-200 to-gray-300 text-gray-400 cursor-not-allowed border border-gray-300"
-            }`}
-          >
-            {/* Animated background shine - only when enabled */}
-            {isFormValid() && !loading && (
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
-            )}
-
-            {loading ? (
-              <>
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin relative z-10" />
-                <span className="text-base relative z-10">Calculating...</span>
-              </>
-            ) : (
-              <>
-                <Calculator
-                  className={`w-4 h-4 relative z-10 transition-transform duration-300 ${
-                    isFormValid() ? "group-hover:scale-110" : ""
-                  }`}
-                />
-                <span className="text-base relative z-10">Calculate</span>
-              </>
-            )}
-          </button>
-        </div>
+        {/* Auto-calculation Status */}
+        {/* {isFormValid() && (
+          <div className="text-center p-2 bg-blue-50/80 border border-blue-200 rounded-md backdrop-blur-sm mb-4">
+            <p className="text-blue-700 text-xs font-medium">
+              💡 Auto-calculating... {inputs.P2 ? "Temperature (T₂)" : "Pressure (P₂)"} will update automatically
+            </p>
+          </div>
+        )} */}
 
         {/* Validation and Error Messages */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           {/* Helper Text */}
-          {(inputs.P2 || inputs.T2) &&
+          {/* {(inputs.P2 || inputs.T2) &&
             !(inputs.P2 && inputs.T2) &&
             isFormValid() && (
-              <div className="text-center p-3 bg-blue-50/80 border border-blue-200 rounded-lg backdrop-blur-sm">
-                <p className="text-blue-700 text-sm font-medium">
-                  💡{" "}
-                  {inputs.P2
-                    ? "Ready to calculate temperature (T₂) from pressure (P₂)"
-                    : "Ready to calculate pressure (P₂) from temperature (T₂)"}
+              <div className="text-center p-2 bg-green-50/80 border border-green-200 rounded-md backdrop-blur-sm">
+                <p className="text-green-700 text-xs font-medium">
+                  ✅ Ready! Calculating {inputs.P2 ? "temperature (T₂)" : "pressure (P₂)"} automatically
                 </p>
               </div>
-            )}
+            )} */}
 
           {/* Validation Issues */}
-          {/* {!isFormValid() && (
-            <div className="text-center p-3 bg-red-50/80 border border-red-200 rounded-lg backdrop-blur-sm">
-              <p className="text-red-700 text-sm font-medium">
-                {!selectedSubstance
+          {/* {!isFormValid() && (inputs.P2 || inputs.T2) && (
+            <div className="text-center p-2 bg-amber-50/80 border border-amber-200 rounded-md backdrop-blur-sm">
+              <p className="text-amber-700 text-xs font-medium">
+                ⚠️ {!selectedSubstance
                   ? "Please select a substance"
                   : !inputs.P1
                   ? "Please fill Pressure (P₁)"
@@ -223,26 +179,23 @@ export default function BoilingPointCalculator() {
                   ? "Please fill Temperature (T₁)"
                   : !inputs.Hvap
                   ? "Please fill Enthalpy of Vaporization (ΔHvap)"
-                  : !inputs.P2 && !inputs.T2
-                  ? "Please enter either P₂ or T₂"
                   : inputs.P2 && inputs.T2
                   ? "Please enter only one target value (P₂ or T₂)"
-                  : Object.keys(validationErrors).length > 0
-                  ? `Validation errors: ${Object.values(validationErrors).join(
-                      ", "
-                    )}`
-                  : "Please check all required fields"}
+                  : "Complete all required fields for auto-calculation"}
               </p>
             </div>
           )} */}
 
           {/* Error Display */}
-          {error && (
-            <div className="text-center p-3 bg-red-50/80 border border-red-200 rounded-lg backdrop-blur-sm">
-              <p className="text-red-700 text-sm font-medium">❌ {error}</p>
+          {/* {error && (
+            <div className="text-center p-2 bg-red-50/80 border border-red-200 rounded-md backdrop-blur-sm">
+              <p className="text-red-700 text-xs font-medium">❌ {error}</p>
             </div>
-          )}
+          )} */}
         </div>
+
+        {/* Results Display */}
+        {/* <ResultsDisplay loading={loading} result={result} error={error} /> */}
       </div>
     </div>
   );

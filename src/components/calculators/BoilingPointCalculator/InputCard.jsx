@@ -1,3 +1,4 @@
+import { Eraser } from "lucide-react";
 import React from "react";
 
 export function InputCard({
@@ -11,6 +12,7 @@ export function InputCard({
   onInputFocus,
   validationErrors,
   focusColor = "focus:ring-orange-500",
+  clearAll
 }) {
   return (
     <div className="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg sm:shadow-xl lg:shadow-2xl border border-gray-100 hover:shadow-md sm:hover:shadow-xl transition-all duration-300 group">
@@ -61,6 +63,25 @@ export function InputCard({
           </div>
         ))}
       </div>
+      {/* Clear Button */}
+
+      {
+        title === "Find Unknown" && (
+
+        <div className="flex justify-end mt-4">
+          <button
+            onClick={clearAll}
+            className="group relative bg-white/80 backdrop-blur-sm border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-1 min-w-[120px] text-xs"
+          >
+            {/* Hover effect background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100/50 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+
+            <Eraser className="w-3 h-3 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+            <span className="text-xs relative z-10">Clear All</span>
+          </button>
+        </div>
+        )
+      }
     </div>
   );
 }

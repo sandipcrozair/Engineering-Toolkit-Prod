@@ -69,7 +69,7 @@ export function useBoilingPointCalculator() {
     }
   }, []);
 
-  const handleSubstanceChange = useCallback(
+const handleSubstanceChange = useCallback(
     (substance) => {
       const newSubstance = substance.name;
       setSelectedSubstance(newSubstance);
@@ -78,7 +78,8 @@ export function useBoilingPointCalculator() {
       if (substance) {
         const newInputs = {
           ...inputs,
-          Hvap: String(substance.Hvap),
+          T1: substance.boilingPoint ? String(substance.boilingPoint) : "", // Auto-fill T1
+          Hvap: substance.Hvap ? String(substance.Hvap) : "", // Auto-fill Hvap
         };
         setInputs(newInputs);
         validateInputs(newInputs, newSubstance);

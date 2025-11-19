@@ -856,7 +856,7 @@ const BarometricLegCalculator = ({
                           Pressure:
                         </span>
                         <span className="font-bold text-blue-900 ml-1 sm:ml-2">
-                          {formatNumber(pressureData.pressure_pa, 0)} Pa
+                          {formatNumber(pressureData.pressure_mbar, 0)}  mbar
                         </span>
                       </div>
                     </div>
