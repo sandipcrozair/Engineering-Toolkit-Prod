@@ -3,7 +3,7 @@ import React from "react";
 export function ExamplesSection({ examples, onLoadExample }) {
   return (
     <div className="mt-6 sm:mt-8 bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl border border-white/60 p-4 sm:p-6 lg:p-8">
-      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+      <h3 className="text-sm sm:text-md lg:text-lg xl:text-xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
         <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg flex items-center justify-center">
           <svg
             className="w-3 h-3 sm:w-4 sm:h-4 text-white"

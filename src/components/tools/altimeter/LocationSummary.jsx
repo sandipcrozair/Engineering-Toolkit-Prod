@@ -117,7 +117,7 @@ const LocationSummary = ({ data }) => {
         <div className="flex flex-col items-center text-center">
           <div className="flex items-center mb-4 sm:mb-6">
             <div className="p-2 sm:p-3 lg:p-4 bg-blue-50 rounded-lg sm:rounded-xl lg:rounded-2xl shadow-sm mr-3 sm:mr-4 lg:mr-5">
-              <FaWind className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-blue-600" />
+              <FaWind className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-600" />
             </div>
             <h4 className="text-base sm:text-s lg:text-lg xl:text-xl font-bold text-blue-900 tracking-wide">
               ATMOSPHERIC PRESSURE
@@ -158,8 +158,8 @@ const LocationSummary = ({ data }) => {
       {/* Additional Information Section */}
       <div className="border-t border-blue-200 pt-4 sm:pt-6">
         <div className="flex items-center mb-6 sm:mb-8 lg:mb-10">
-          <div className="w-1.5 sm:w-2 h-5 sm:h-6 lg:h-8 bg-blue-600 rounded-full mr-3 sm:mr-4"></div>
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900 tracking-tight">
+          <div className="w-1.5 sm:w-2 h-5 sm:h-4 lg:h-6 bg-blue-600 rounded-full mr-3 sm:mr-4"></div>
+          <h3 className="text-md sm:text-lg lg:text-xl font-bold text-blue-900 tracking-tight">
             Other Information
           </h3>
         </div>

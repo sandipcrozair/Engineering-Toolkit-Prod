@@ -89,7 +89,7 @@ export default function Calculators() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pb-2">
       {/* Header Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl mx-4 mt-4 sm:mt-6 mb-8 sm:mb-12 p-6 sm:p-8 lg:p-12 text-white shadow-2xl">
         {/* Background Elements */}
@@ -112,13 +112,13 @@ export default function Calculators() {
                 </div>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 leading-tight">
+              <h1 className="text-lg sm:text-xl lg:text-2xl xl:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
                 Engineering{" "}
                 <span className="text-cyan-300 block sm:inline">
                   Calculators
                 </span>
               </h1>
-              <p className="text-blue-100 text-base sm:text-lg lg:text-xl xl:text-2xl max-w-2xl leading-relaxed mb-6 sm:mb-8">
+              <p className="text-blue-100 text-base sm:text-xs lg:text-md xl:text-lg max-w-2xl leading-relaxed mb-6 sm:mb-8">
                 Advanced calculation tools for engineers, scientists, and
                 researchers. Precision-powered solutions for complex problems.
               </p>
@@ -185,7 +185,7 @@ export default function Calculators() {
                   placeholder="Search calculators..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 text-sm sm:text-base lg:text-lg rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition-all duration-200 hover:bg-white"
+                  className="w-full pl-10 pr-4 py-3 text-sm sm:text-base lg:text-md rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition-all duration-200 hover:bg-white"
                 />
               </div>
 
@@ -195,7 +195,7 @@ export default function Calculators() {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="py-3 w-full text-sm sm:text-base lg:text-lg bg-transparent border-none focus:ring-0 focus:outline-none text-gray-700 font-medium w-48 sm:w-56 cursor-pointer"
+                  className="py-3 w-full text-sm sm:text-base lg:text-md bg-transparent border-none focus:ring-0 focus:outline-none text-gray-700 font-medium w-48 sm:w-56 cursor-pointer"
                 >
                   {categories.map((category) => (
                     <option key={category} value={category}>
@@ -292,10 +292,10 @@ export default function Calculators() {
 
                     {/* Content */}
                     <div className="flex-grow">
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">
                         {calc.name}
                       </h3>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
+                      <p className="text-gray-600 text-sm mb-3 flex-1">
                         {calc.subtitle}
                       </p>
 

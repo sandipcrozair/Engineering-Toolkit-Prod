@@ -227,14 +227,14 @@ function EmptyResultsState() {
           />
         </svg>
       </div>
-      <p className="text-base sm:text-lg font-semibold text-gray-600 mb-2">
+      <p className="text-base sm:text-md font-semibold text-gray-600 mb-2">
         Ready to Calculate
       </p>
       <p className="text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6">
         Enter any 4 out of 5 parameters and click "Calculate Missing Parameter"
       </p>
       <div className="p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg sm:rounded-xl border border-blue-200/50">
-        <p className="text-xs sm:text-sm text-blue-700 font-medium">
+        <p className="text-xs md:text-sm text-blue-700 font-medium">
           💡 <strong>Tip:</strong> Leave one field empty to calculate it based
           on the other four parameters!
         </p>

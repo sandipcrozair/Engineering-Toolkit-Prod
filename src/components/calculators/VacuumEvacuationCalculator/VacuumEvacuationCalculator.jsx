@@ -45,8 +45,8 @@ const VacuumEvacuationCalculator = () => {
           <div className="xl:col-span-2">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl lg:shadow-2xl border border-white/60 p-4 sm:p-6 lg:p-8">
               <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-                <div className="w-1.5 h-6 sm:w-2 sm:h-8 bg-gradient-to-b from-blue-500 to-purple-600 rounded-full"></div>
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">
+                <div className="w-1.5 sm:w-2 h-4 sm:h-6 lg:h-8 bg-gradient-to-b from-blue-500 to-purple-600 rounded-full"></div>
+                <h2 className="text-lg sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800">
                   Input Parameters
                 </h2>
               </div>
@@ -130,7 +130,7 @@ const VacuumEvacuationCalculator = () => {
 
               {/* Instruction */}
               <div className="mt-4 p-3 bg-blue-50/80 border border-blue-200 rounded-lg sm:rounded-xl">
-                <p className="text-xs text-blue-700 text-center">
+                <p className="text-xs md:text-sm text-blue-700 font-medium text-center">
                   💡 <strong>Tip:</strong> Fill any 4 fields and leave one empty
                   to calculate it. Values will automatically convert when
                   changing units.
@@ -145,8 +145,8 @@ const VacuumEvacuationCalculator = () => {
           {/* Results Section */}
           <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl border border-white/60 p-4 sm:p-6 lg:p-8 backdrop-blur-sm">
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-              <div className="w-1.5 h-6 sm:w-2 sm:h-8 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full"></div>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">
+              <div className="w-1.5 sm:w-2 h-4 sm:h-6 lg:h-8 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full"></div>
+              <h2 className="text-lg sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-800">
                 Calculation Result
               </h2>
             </div>

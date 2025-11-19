@@ -15,8 +15,25 @@ import {
 } from "lucide-react";
 import AltimeterIcon from "../assets/altitude.png";
 import PressureIcon from "../assets/pressure.png";
+import BoilIcon from "../assets/boil.png";
 
 const tools = [
+  {
+    name: "Boiling Point Calculator",
+    subtitle:
+      "Determine boiling points at different pressures using Clausius-Clapeyron equation with substance database",
+    icon: BoilIcon,
+    path: "boiling-point-calculator",
+    category: "Thermodynamics",
+    gradient: "from-orange-500 to-red-500",
+    bgColor: "bg-gradient-to-br from-orange-500 to-red-500",
+    badgeColor: "bg-orange-100 text-orange-700 border border-orange-200",
+    features: [
+      "Substance database",
+      "Bidirectional calculation",
+      "Heat of vaporization data",
+    ],
+  },
   {
     name: "Altimeter",
     subtitle:
@@ -33,6 +50,41 @@ const tools = [
       "Geographic parameters",
     ],
   },
+   {
+    name: "Barometric Leg Calculator",
+    subtitle:
+      "Calculate maximum condensate lift height in vacuum systems using atmospheric pressure principles",
+    icon: <Gauge className="text-white" size={24} />,
+    path: "barometric-leg-calculator",
+    category: "Vacuum Engineering",
+    gradient: "from-purple-500 to-pink-500",
+    bgColor: "bg-gradient-to-br from-purple-500 to-pink-500",
+    badgeColor: "bg-purple-100 text-purple-700 border border-purple-200",
+    features: [
+      "Predefined liquid database",
+      "Current location pressure",
+      "Safety factor adjustment",
+    ],
+  },
+  {
+      name: "Vacuum Evacuation Time",
+      subtitle:
+        "Calculate chamber evacuation times with precision using volume, pump capacity, and pressure parameters",
+      icon: <Clock
+      
+      
+      className="text-white" size={24} />,
+      path: "vaccum-evacuation-time",
+      category: "Vacuum Engineering",
+      gradient: "from-indigo-500 to-blue-500",
+      bgColor: "bg-gradient-to-br from-indigo-500 to-blue-500",
+      badgeColor: "bg-indigo-100 text-indigo-700 border border-indigo-200",
+      features: [
+        "Multi-unit support",
+        "Pressure range calculator",
+        "Lock & calculate any parameter",
+      ],
+    },
   {
     name: "Vacuum Unit Converter",
     subtitle:
@@ -65,22 +117,7 @@ const tools = [
       "High precision",
     ],
   },
-  {
-    name: "Barometric Leg Calculator",
-    subtitle:
-      "Calculate maximum condensate lift height in vacuum systems using atmospheric pressure principles",
-    icon: <Gauge className="text-white" size={24} />,
-    path: "barometric-leg-calculator",
-    category: "Vacuum Engineering",
-    gradient: "from-purple-500 to-pink-500",
-    bgColor: "bg-gradient-to-br from-purple-500 to-pink-500",
-    badgeColor: "bg-purple-100 text-purple-700 border border-purple-200",
-    features: [
-      "Predefined liquid database",
-      "Current location pressure",
-      "Safety factor adjustment",
-    ],
-  },
+ 
 ];
 
 export default function Tools() {
@@ -121,17 +158,17 @@ export default function Tools() {
                 </div>
                 <div className="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 rounded-full backdrop-blur-sm border border-white/30 w-fit">
                   <Sparkles className="text-yellow-300 w-4 h-4 sm:w-5 sm:h-5" />
-                  <span className="text-white font-semibold text-xs sm:text-sm">
+                  <span className="text-white font-semibold text-xs sm:text-xs">
                     Engineering Tools
                   </span>
                 </div>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 leading-tight">
+              <h1 className="text-lg sm:text-xl lg:text-2xl xl:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
                 Professional{" "}
                 <span className="text-cyan-300 block sm:inline">Tools</span>
               </h1>
-              <p className="text-blue-100 text-base sm:text-lg lg:text-xl xl:text-2xl max-w-2xl leading-relaxed mb-6 sm:mb-8">
+              <p className="text-blue-100 text-base sm:text-xs lg:text-md xl:text-lg max-w-2xl leading-relaxed mb-6 sm:mb-8">
                 Essential conversion and calculation tools for engineers and
                 scientists. Accurate, reliable, and built for professionals.
               </p>
@@ -198,7 +235,7 @@ export default function Tools() {
                   placeholder="Search tools.."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 text-sm sm:text-base lg:text-lg rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition-all duration-200 hover:bg-white"
+                  className="w-full pl-10 pr-4 py-3 text-sm sm:text-base lg:text-md rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm transition-all duration-200 hover:bg-white"
                 />
               </div>
 
@@ -208,7 +245,7 @@ export default function Tools() {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="py-3 w-full text-sm sm:text-base lg:text-lg bg-transparent border-none focus:ring-0 focus:outline-none text-gray-700 font-medium w-48 sm:w-56 cursor-pointer"
+                  className="py-3 w-full text-sm sm:text-base lg:text-md bg-transparent border-none focus:ring-0 focus:outline-none text-gray-700 font-medium w-48 sm:w-56 cursor-pointer"
                 >
                   {categories.map((category) => (
                     <option key={category} value={category}>

@@ -17,10 +17,14 @@ export function BoilingPointHeader({ BoilIcon }) {
           />
         </div>
         <div className="flex-1 min-w-0">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-white to-orange-100 bg-clip-text text-transparent leading-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white to-orange-100 bg-clip-text text-transparent leading-tight">
             Boiling Point Calculator
           </h1>
-          <p className="text-orange-100 mt-1 sm:mt-2 text-sm sm:text-base lg:text-lg leading-snug sm:leading-relaxed">
+          {/* <p className="text-orange-100 mt-1 sm:mt-2 text-sm sm:text-base xl:text-md text-gray-600 leading-snug sm:leading-relaxed">
+            Calculate boiling points at different pressures using the
+            Clausius-Clapeyron equation
+          </p> */}
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl bg-gradient-to-r from-white to-orange-100 bg-clip-text text-transparent leading-tight">
             Calculate boiling points at different pressures using the
             Clausius-Clapeyron equation
           </p>

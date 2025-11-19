@@ -21,13 +21,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       description: "Engineering utilities",
       exact: false,
     },
-    {
-      name: "Calculators",
-      path: "/calculators",
-      icon: <Calculator className="w-4 h-4 sm:w-5 sm:h-5" />,
-      description: "Math & conversions",
-      exact: false,
-    },
+    // {
+    //   name: "Calculators",
+    //   path: "/calculators",
+    //   icon: <Calculator className="w-4 h-4 sm:w-5 sm:h-5" />,
+    //   description: "Math & conversions",
+    //   exact: false,
+    // },
     // {
     //   name: "Settings",
     //   path: "/settings",

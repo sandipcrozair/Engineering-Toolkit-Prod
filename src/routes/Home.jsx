@@ -13,8 +13,28 @@ import BoilIcon from "../assets/boil.png";
 import PressureIcon from "../assets/pressure.png";
 import AltimeterIcon from "../assets/altitude.png";
 import WindIcon from "../assets/wind-sign.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/tools`);
+  };
+
+  const handleCardClick = (item) => {
+    // Skip if item is coming soon
+    if (item.comingSoon) return;
+
+    // Generate path based on category and name
+    const path =
+      item.path ||
+      `/${item.category}/${encodeURIComponent(
+        item.name.toLowerCase().replace(/\s+/g, "-")
+      )}`;
+    navigate(path);
+  };
+
   const tools = [
     {
       name: "Altimeter",
@@ -24,6 +44,7 @@ export default function Home() {
       category: "tools",
       gradient: "from-blue-500 to-blue-600",
       color: "bg-gradient-to-br from-blue-500 to-blue-600",
+      path: "/tools/elevation-calculator",
     },
     {
       name: "Vacuum Unit Converter",
@@ -33,6 +54,7 @@ export default function Home() {
       category: "tools",
       gradient: "from-purple-500 to-purple-600",
       color: "bg-gradient-to-br from-purple-500 to-purple-600",
+      path: "/tools/vacuum-converter",
     },
     {
       name: "Pressure Unit Converter",
@@ -42,6 +64,7 @@ export default function Home() {
       category: "tools",
       gradient: "from-emerald-500 to-emerald-600",
       color: "bg-gradient-to-br from-emerald-500 to-emerald-600",
+      path: "/tools/pressure-converter",
     },
   ];
 
@@ -54,6 +77,7 @@ export default function Home() {
       category: "calculators",
       color: "from-orange-500 to-red-500",
       gradient: "bg-gradient-to-r from-orange-500 to-red-500",
+      path: "/tools/boiling-point-calculator",
     },
     {
       name: "Vacuum Evacuation Time",
@@ -63,6 +87,7 @@ export default function Home() {
       category: "calculators",
       color: "from-indigo-500 to-blue-500",
       gradient: "bg-gradient-to-r from-indigo-500 to-blue-500",
+      path: "/tools/vaccum-evacuation-time",
     },
     {
       name: "Flow Rate Calculator",
@@ -72,7 +97,7 @@ export default function Home() {
       category: "calculators",
       color: "from-teal-500 to-blue-500",
       gradient: "bg-gradient-to-br from-teal-500 to-blue-500",
-      badge: "Soon",
+      badge: "coming Soon",
       comingSoon: true,
     },
   ];
@@ -134,11 +159,11 @@ export default function Home() {
       <div className="relative z-10 py-8 px-4 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-lg border border-blue-500/30">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm font-semibold mb-4 sm:mb-6 shadow-lg border border-blue-500/30">
             <Rocket className="w-4 h-4" />
             🛠️ Precision Engineering Tools
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">
             <span className="block bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent mt-2 sm:mt-3">
               Crozair{" "}
               <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
@@ -146,7 +171,7 @@ export default function Home() {
               </span>
             </span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
             Professional-grade tools and calculators for engineering
             applications.
             <span className="font-semibold text-blue-600">
@@ -169,10 +194,10 @@ export default function Home() {
                 >
                   <feature.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-sm font-semibold text-gray-800 mb-1">
+                <h3 className="text-base font-semibold text-gray-800 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-xs text-gray-600 leading-tight">
+                <p className="text-sm text-gray-600 leading-tight">
                   {feature.description}
                 </p>
               </div>
@@ -185,12 +210,12 @@ export default function Home() {
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
               <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600">
+              <h2 className="text-3xl sm:text-4xl font-bold text-blue-600">
                 Professional <span className="text-gray-800">Tools</span>
               </h2>
               <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
             </div>
-            <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4 sm:px-0">
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto px-4 sm:px-0">
               Essential conversion tools for pressure, vacuum, and elevation
               calculations
             </p>
@@ -200,6 +225,7 @@ export default function Home() {
             {tools.map((tool, index) => (
               <div
                 key={index}
+                onClick={() => handleCardClick(tool)}
                 className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer overflow-hidden"
               >
                 {/* Background Gradient Effect */}
@@ -214,16 +240,16 @@ export default function Home() {
                   <img
                     src={tool.icon}
                     alt={tool.name}
-                    className="w-8 h-8 sm:w-8 sm:h-8 lg:w-10 lg:h-10 object-contain filter invert"
+                    className="w-8 h-8 sm:w-10 sm:h-10 object-contain filter invert"
                   />
                   <div className="absolute inset-0 bg-white/10 rounded-2xl"></div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 text-center relative">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 text-center relative">
                   {tool.name}
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base text-center leading-relaxed relative">
+                <p className="text-gray-600 text-base text-center leading-relaxed relative">
                   {tool.description}
                 </p>
 
@@ -241,12 +267,12 @@ export default function Home() {
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
                 Specialized <span className="text-green-600">Calculators</span>
               </h2>
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             </div>
-            <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4 sm:px-0">
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto px-4 sm:px-0">
               Advanced calculators for complex engineering computations and
               scientific analysis
             </p>
@@ -256,12 +282,24 @@ export default function Home() {
             {calculators.map((calculator, index) => (
               <div
                 key={index}
-                className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer overflow-hidden"
+                onClick={() => handleCardClick(calculator)}
+                className={`group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-500 overflow-hidden ${
+                  calculator.comingSoon
+                    ? "cursor-not-allowed opacity-60"
+                    : "cursor-pointer hover:-translate-y-2"
+                }`}
               >
                 {/* Background Gradient Effect */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${calculator.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
                 ></div>
+
+                {/* Coming Soon Badge */}
+                {calculator.comingSoon && (
+                  <div className="absolute top-4 right-4 bg-gray-500 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">
+                    {calculator.badge}
+                  </div>
+                )}
 
                 {/* Icon Container */}
                 <div
@@ -280,17 +318,19 @@ export default function Home() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 text-center relative">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 text-center relative">
                   {calculator.name}
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base text-center leading-relaxed relative">
+                <p className="text-gray-600 text-base text-center leading-relaxed relative">
                   {calculator.description}
                 </p>
 
                 {/* Hover Effect Line */}
-                <div
-                  className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r ${calculator.color} group-hover:w-3/4 transition-all duration-500 rounded-full`}
-                ></div>
+                {!calculator.comingSoon && (
+                  <div
+                    className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r ${calculator.color} group-hover:w-3/4 transition-all duration-500 rounded-full`}
+                  ></div>
+                )}
               </div>
             ))}
           </div>
@@ -302,16 +342,19 @@ export default function Home() {
             <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
               <Sparkles className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-3 sm:mb-4">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
               Ready to Start Calculating?
             </h3>
-            <p className="text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
+            <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
               Choose any tool or calculator above to begin your engineering
               calculations with precision and confidence.
             </p>
-            <div className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm sm:text-base">
+            <div
+              className="inline-flex items-center gap-2 text-blue-600 font-semibold text-lg cursor-pointer hover:text-blue-700 hover:underline"
+              onClick={handleClick}
+            >
               Select a tool to get started
-              <Zap className="w-4 h-4" />
+              <Zap className="w-5 h-5" />
             </div>
           </div>
         </div>

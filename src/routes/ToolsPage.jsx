@@ -12,6 +12,18 @@ const ElevationCalculator = React.lazy(() =>
   import("../components/tools/altimeter/Altimeter")
 );
 
+const BoilingPointCalculator = React.lazy(() =>
+  import(
+    "../components/calculators/BoilingPointCalculator/BoilingPointCalculator"
+  )
+);
+
+const VaccumEvacuationTimeCalculator = React.lazy(() =>
+  import(
+    "../components/calculators/VacuumEvacuationCalculator/VacuumEvacuationCalculator"
+  )
+);
+
 const ToolPage = () => {
   const { toolName } = useParams();
   const [data, setData] = useState(null);
@@ -165,6 +177,10 @@ const ToolPage = () => {
 
   const renderTools = () => {
     switch (toolName?.toLowerCase()) {
+       case "boiling-point-calculator":
+        return <BoilingPointCalculator />;
+       case "vaccum-evacuation-time":
+        return <VaccumEvacuationTimeCalculator />;
       case "pressure-converter":
         return <PressureConverter2 />;
       case "vacuum-converter":

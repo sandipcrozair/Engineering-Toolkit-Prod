@@ -13,7 +13,7 @@ export function SubstanceSelector({
 }) {
   return (
     <div className="mb-6 sm:mb-8">
-      <label className="block text-gray-700 font-bold mb-3 sm:mb-4 text-base sm:text-lg lg:text-xl flex items-center gap-2">
+      <label className="block text-gray-700 font-bold mb-3 text-md sm:text-sm lg:text-xl flex items-center gap-2">
         <Droplets className="text-orange-500 w-4 h-4 sm:w-5 sm:h-5" />
         Select Substance
       </label>
@@ -21,7 +21,7 @@ export function SubstanceSelector({
       <div className="relative">
         <button
           onClick={onToggleDropdown}
-          className={`w-full border-2 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white shadow-lg transition-all duration-300 text-left flex items-center justify-between group hover:border-orange-300 ${
+          className={`w-full border-2 rounded-xl sm:rounded-2xl p-3 sm:p-2 lg:p-4 focus:border-orange-500 bg-white shadow-lg transition-all duration-300 text-left flex items-center justify-between group hover:border-orange-300 ${
             selectedSubstanceData
               ? `bg-gradient-to-r ${selectedSubstanceData.color} bg-opacity-10`
               : ""
@@ -56,7 +56,7 @@ export function SubstanceSelector({
               </>
             ) : (
               <span
-                className={`text-sm sm:text-base lg:text-lg ${
+                className={`text-xs sm:text-base md:text-md ${
                   validationErrors.substance && "text-gray-500"
                 }`}
               >
@@ -95,7 +95,7 @@ export function SubstanceSelector({
                     <button
                       key={substance.name}
                       onClick={() => onSubstanceChange(substance)}
-                      className="w-full px-4 sm:px-6 py-3 sm:py-4 text-left hover:bg-gray-50 transition-colors duration-200 border-b border-gray-100 last:border-b-0 flex items-center gap-2 sm:gap-4"
+                      className="w-full px-4 sm:px-6 py-1 sm:py-3 text-left hover:bg-gray-50 transition-colors duration-200 border-b border-gray-100 last:border-b-0 flex items-center gap-2 sm:gap-4"
                     >
                       <div
                         className={`w-1.5 h-6 sm:w-2 sm:h-8 rounded-full bg-gradient-to-b ${substance.color} flex-shrink-0`}

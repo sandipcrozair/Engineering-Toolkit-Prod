@@ -265,7 +265,7 @@ const BarometricLegCalculator = ({
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
             Barometric Leg
           </h1>
-          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-2">
+          <p className="text-sm sm:text-base xl:text-md text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
             Calculate maximum condensate lift height in vacuum systems using
             atmospheric pressure principles. Perfect for engineering and
             scientific applications.
@@ -276,15 +276,18 @@ const BarometricLegCalculator = ({
           {/* Input Section */}
           <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg sm:shadow-xl border border-gray-100 p-4 sm:p-6 lg:p-8">
             <div className="flex items-center mb-6 sm:mb-8">
-              <div className="w-1.5 sm:w-2 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3 sm:mr-4"></div>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
+              <div className="w-1.5 sm:w-2 h-4 sm:h-6 lg:h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3 sm:mr-4"></div>
+              {/* <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
                 Parameters
-              </h2>
+              </h2> */}
+               <h1 className="text-lg sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900">
+                  Parameters
+               </h1>
             </div>
 
             {/* Liquid Selection */}
             <div className="mb-6 sm:mb-8">
-              <label className="block text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4 flex items-center">
+              <label className="block text-base sm:text-md font-semibold text-gray-800 mb-3 sm:mb-4 flex items-center">
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-blue-500"
                   fill="none"
@@ -306,7 +309,7 @@ const BarometricLegCalculator = ({
                 <button
                   onClick={toggleDropdown}
                   disabled={isLoading}
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:ring-1 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 transition-all duration-300 hover:border-blue-300 hover:shadow-md flex justify-between items-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-base border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:ring-1 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 transition-all duration-300 hover:border-blue-300 hover:shadow-md flex justify-between items-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="font-medium text-left truncate pr-2">
                     {selectedLiquid.name}
@@ -372,7 +375,7 @@ const BarometricLegCalculator = ({
               {/* Custom Density Input */}
               {showCustomInput && (
                 <div className="mt-4 sm:mt-6 p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl sm:rounded-2xl border-2 border-blue-100">
-                  <label className="block text-base sm:text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                 <label className="block text-base lg:text-md font-semibold text-gray-800 mb-3 flex items-center">
                     <svg
                       className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-blue-500"
                       fill="none"
@@ -398,7 +401,7 @@ const BarometricLegCalculator = ({
                     value={customDensity}
                     onChange={handleCustomDensityChange}
                     placeholder="Enter density in kg/m³"
-                    className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base border-2 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 transition-all duration-300 ${
+                    className={`w-full px-3 sm:px-4 py-3 sm:py-3 text-sm sm:text-base border-2 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 transition-all duration-300 ${
                       customDensity && !isValidCustomDensity()
                         ? "border-red-300 bg-red-50 ring-2 ring-red-200"
                         : "border-blue-200 hover:border-blue-300"
@@ -490,7 +493,7 @@ const BarometricLegCalculator = ({
                   isLoading ||
                   (selectedLiquid.name === "Other" && !isValidCustomDensity())
                 }
-                className="w-full py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-semibold sm:font-bold text-sm sm:text-base lg:text-lg rounded-xl sm:rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg sm:hover:shadow-xl disabled:scale-100 disabled:shadow-none flex items-center justify-center shadow-md sm:shadow-lg"
+                className="w-full py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-semibold sm:font-bold text-sm sm:text-base lg:text-md rounded-xl sm:rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg sm:hover:shadow-xl disabled:scale-100 disabled:shadow-none flex items-center justify-center shadow-md sm:shadow-lg"
               >
                 {isLoading && calculationMode === "seaLevel" ? (
                   <>
@@ -535,7 +538,7 @@ const BarometricLegCalculator = ({
                   isLoading ||
                   (selectedLiquid.name === "Other" && !isValidCustomDensity())
                 }
-                className="w-full py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-semibold sm:font-bold text-sm sm:text-base lg:text-lg rounded-xl sm:rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg sm:hover:shadow-xl disabled:scale-100 disabled:shadow-none flex items-center justify-center shadow-md sm:shadow-lg"
+                className="w-full py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-semibold sm:font-bold text-sm sm:text-base lg:text-md rounded-xl sm:rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg sm:hover:shadow-xl disabled:scale-100 disabled:shadow-none flex items-center justify-center shadow-md sm:shadow-lg"
               >
                 {isLoading && calculationMode === "currentLocation" ? (
                   <>
@@ -634,9 +637,9 @@ const BarometricLegCalculator = ({
 
             {/* Calculation Details */}
             <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-gray-200">
-              <h3 className="font-bold text-gray-900 text-lg sm:text-xl mb-3 sm:mb-4 flex items-center">
+              <h3 className="font-bold text-gray-900 text-md sm:text-lg mb-3 sm:mb-4 flex items-center">
                 <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3 text-blue-500"
+                  className="w-3 h-3 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3 text-blue-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -655,7 +658,7 @@ const BarometricLegCalculator = ({
                   <span className="text-gray-600 font-medium text-sm sm:text-base">
                     Selected Liquid:
                   </span>
-                  <span className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg">
+                  <span className="font-bold text-gray-900 text-sm sm:text-base lg:text-md">
                     {selectedLiquid.name}
                   </span>
                 </div>
@@ -663,7 +666,7 @@ const BarometricLegCalculator = ({
                   <span className="text-gray-600 font-medium text-sm sm:text-base">
                     Density:
                   </span>
-                  <span className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg">
+                  <span className="font-bold text-gray-900 text-sm sm:text-base lg:text-md">
                     {getCurrentDensity()} kg/m³
                     {selectedLiquid.name === "Other" &&
                       customDensity &&
@@ -678,7 +681,7 @@ const BarometricLegCalculator = ({
                   <span className="text-gray-600 font-medium text-sm sm:text-base">
                     Gravity Constant:
                   </span>
-                  <span className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg">
+                  <span className="font-bold text-gray-900 text-sm sm:text-base lg:text-md">
                     9.81 m/s²
                   </span>
                 </div>
@@ -689,8 +692,8 @@ const BarometricLegCalculator = ({
           {/* Results Section */}
           <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg sm:shadow-xl border border-gray-100 p-4 sm:p-6 lg:p-8">
             <div className="flex items-center mb-6 sm:mb-8">
-              <div className="w-1.5 sm:w-2 h-6 sm:h-8 lg:h-10 bg-gradient-to-b from-green-500 to-emerald-500 rounded-full mr-3 sm:mr-4"></div>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
+              <div className="w-1.5 sm:w-2 h-4 sm:h-6 lg:h-8 bg-gradient-to-b from-green-500 to-emerald-500 rounded-full mr-3 sm:mr-4"></div>
+              <h2 className="text-lg sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900">
                 Results
               </h2>
             </div>
@@ -879,7 +882,7 @@ const BarometricLegCalculator = ({
                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-700 mb-2 sm:mb-3">
+                  <h3 className="font-bold text-md sm:text-lg text-gray-700 mb-2 sm:mb-3">
                     No Calculation Yet
                   </h3>
                   <p className="text-gray-500 mb-6 sm:mb-8 max-w-md mx-auto text-sm sm:text-base leading-relaxed">
@@ -887,7 +890,7 @@ const BarometricLegCalculator = ({
                     "Calculate at Current Location" to see the results here.
                   </p>
                   <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl p-4 sm:p-5 border-2 border-blue-200">
-                    <p className="text-base sm:text-lg font-bold text-blue-800 mb-1 sm:mb-2">
+                    <p className="text-sm sm:text-base lg:text-md font-bold text-blue-800 mb-1 sm:mb-2">
                       Formula: h = P / (ρ × g)
                     </p>
                     <p className="text-xs sm:text-sm text-blue-700">

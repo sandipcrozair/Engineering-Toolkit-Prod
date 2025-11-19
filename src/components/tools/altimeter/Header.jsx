@@ -15,7 +15,7 @@ const Header = () => {
         />
       </div>
 
-      <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
+      <h1 className="text-lg sm:text-xl lg:text-2xl xl:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
         Altimeter
       </h1>
 
