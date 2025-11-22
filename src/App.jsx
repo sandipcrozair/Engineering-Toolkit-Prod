@@ -27,7 +27,7 @@ const App = () => (
           <Route path="/tools" element={<Tools />} />
           <Route path="/tools/:toolName" element={<ToolsPage />} />
           <Route path="/calculators" element={<Calculators />} />
-          <Route path="/calculators/:calcName" element={<CalculatorPage />} />
+          {/* <Route path="/calculators/:calcName" element={<CalculatorPage />} /> */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
